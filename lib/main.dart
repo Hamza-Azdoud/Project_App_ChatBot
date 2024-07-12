@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
           indicatorColor: Colors.white,
-          primaryColor: Colors.teal,
+          primaryColor: Colors.deepOrange,
       ),
       routes: {
         "/chat" :(context)=> ChatBotPage(),
@@ -31,6 +31,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
       // drawer: Drawer(
       //   child: Column(
       //     children: [
@@ -70,8 +71,8 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Container(
           alignment: Alignment.center,
-          height: 400,
-          width: 400 ,
+          height: double.infinity,
+          width: double.infinity,
           child: Card(
             color: Colors.white,
             child: Padding(
@@ -131,17 +132,18 @@ class HomePage extends StatelessWidget {
                         backgroundColor: Theme.of(context).primaryColor,
                       ),
                       onPressed: (){
-                        // String username = loginController.text;
-                        // String password = loginController.text;
-                        // if(username=="admin"&& password=="1234"){
-                        //   Navigator.pushNamed(context, "/chat");
-                        //}
+                        String usename = loginController.text;
+                        String password = passwordController.text;
+                        if (usename == "admin" && password == "1234") {
+                          Navigator.of(context).pop();
+                          Navigator.pushNamed(context, "/chat");
+                        }
                       },
                       child: Text(
                           "Log In",
                           style: TextStyle(
                             fontSize: 22,
-                            color: Theme.of(context).primaryColor,
+                            color: Theme.of(context).indicatorColor,
                           ),
                       ),
 
